@@ -36,7 +36,7 @@ external payment(String auth);
 // ==============================================================
 
 class BraintreeWidget extends StatefulWidget {
-  BraintreeWidget();
+  const BraintreeWidget();
 
   @override
   _BraintreeWidgetState createState() => _BraintreeWidgetState();
@@ -52,15 +52,18 @@ class BraintreeWidget extends StatefulWidget {
     ui.platformViewRegistry.registerViewFactory('braintree-container', (int viewId) => paymentDiv);
 
     // show dialog
-    Future dialogResponse = showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return CustomAlertDialog(
-            content: Container(child: this),
-            actions: <Widget>[],
-          );
-        });
-
+    Future dialogResponse = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Text('Select assignment'),
+          children: <Widget>[
+            Container(child: this),
+          ]
+        );
+      }
+    );
+    
     // call js function
     var promise = payment(request.clientToken);
     String nonce = await promiseToFuture(promise);

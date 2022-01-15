@@ -56,6 +56,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_braintree",
+      "rootUri": "file:///Users/daniel/.pub-cache/hosted/pub.dartlang.org/flutter_braintree-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/daniel/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4",
       "packageUri": "lib/",
@@ -64,6 +70,12 @@
     {
       "name": "flutter_test",
       "rootUri": "file:///Users/daniel/fvm/versions/stable/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/daniel/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -152,7 +164,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-01-15T20:41:00.058087Z",
+  "generated": "2022-01-15T20:47:54.343307Z",
   "generator": "pub",
   "generatorVersion": "2.15.1"
 }
