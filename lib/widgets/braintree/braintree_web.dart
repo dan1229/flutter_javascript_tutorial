@@ -86,11 +86,11 @@ class BraintreeWidget extends StatefulWidget {
 class _BraintreeWidgetState extends State<BraintreeWidget> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
+    return const SingleChildScrollView(
+      child: SizedBox(
         width: 600.0,
         height: 300.0,
-        child: const HtmlElementView(
+        child: HtmlElementView(
           viewType: 'braintree-container',
         ),
       ),
