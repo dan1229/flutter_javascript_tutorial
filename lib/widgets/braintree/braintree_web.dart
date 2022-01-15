@@ -15,7 +15,6 @@ library braintree_payment;
 import 'dart:html' as html;
 import 'dart:ui' as ui;
 
-import 'package:flutter_javascript_tutorial/widgets/dialog_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 // ignore: implementation_imports
@@ -41,7 +40,7 @@ class BraintreeWidget extends StatefulWidget {
   @override
   _BraintreeWidgetState createState() => _BraintreeWidgetState();
 
-  Future<BraintreeDropInResult> start(BuildContext context, BraintreeDropInRequest request) async {
+  Future<BraintreeDropInResult?> start(BuildContext context, BraintreeDropInRequest request) async {
     // create div with html embedded
     String htmlL = """<div id="checkout-message"></div>
         <div id="dropin-container"></div>
@@ -65,8 +64,8 @@ class BraintreeWidget extends StatefulWidget {
     );
     
     // call js function
-    var promise = payment(request.clientToken);
-    String nonce = await promiseToFuture(promise);
+    var promise = payment(request.clientToken ?? "");
+    String? nonce = await promiseToFuture(promise);
 
     // close dialog
     Navigator.pop(
@@ -84,14 +83,14 @@ class BraintreeWidget extends StatefulWidget {
   }
 }
 
-class _BraintreeWidgetState extends BaseState<BraintreeWidget> {
+class _BraintreeWidgetState extends State<BraintreeWidget> {
   @override
-  Widget customBuild(BuildContext context) {
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
         width: 600.0,
         height: 300.0,
-        child: HtmlElementView(
+        child: const HtmlElementView(
           viewType: 'braintree-container',
         ),
       ),
