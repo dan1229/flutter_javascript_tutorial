@@ -31,6 +31,9 @@
 
   <title>flutter_javascript_tutorial</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Braintree -->
+<script src="https://js.braintreegateway.com/web/dropin/1.32.1/js/dropin.min.js"></script>
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
@@ -100,5 +103,7 @@
       loadMainDartJs();
     }
   </script>
+  <script src="js/require.js"></script>
+<script>require(["js/main"])</script>
 </body>
 </html>
