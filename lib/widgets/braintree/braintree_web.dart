@@ -74,7 +74,7 @@ class BraintreeWidget extends StatefulWidget {
 
     // return nonce
     if (nonce != null) {
-      BraintreePaymentMethodNonce btNonce = BraintreePaymentMethodNonce(nonce: nonce, typeLabel: null, description: null, isDefault: null);
+      BraintreePaymentMethodNonce btNonce = BraintreePaymentMethodNonce(nonce: nonce, typeLabel: 'Visa', description: 'Visa ending in', isDefault: false);
       return BraintreeDropInResult(paymentMethodNonce: btNonce, deviceData: null);
     } else {
       // DIALOG CLOSED OR NONCE INVALID
