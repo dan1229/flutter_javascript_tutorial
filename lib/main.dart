@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:flutter_javascript_tutorial/widgets/braintree/braintree.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,17 +50,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String clientToken = "TEST";
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  String getTotal() {
+    return "1.00";
+  }
+
+  bool isWeb() {
+    return kIsWeb;
   }
 
   @override
@@ -95,21 +94,41 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
-              '$_counter',
+              'Flutter/JS Tutorial',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: showDialogBraintree(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  showDialogBraintree() async {
+        BraintreeDropInRequest request = BraintreeDropInRequest(
+          clientToken: clientToken,
+          collectDeviceData: true,
+          venmoEnabled: true,
+          cardEnabled: true,
+          amount: getTotal(),
+          googlePaymentRequest: BraintreeGooglePaymentRequest(
+            currencyCode: 'USD',
+            billingAddressRequired: false,
+            totalPrice: getTotal(),
+          ),
+        );
+        BraintreeDropInResult? braintreeResult;
+        if (isWeb()) {
+          // WEB VERSION =================================/
+          braintreeResult = await BraintreeWidget().start(context, request);
+        } else {
+          // MOBILE VERSION ===================================/
+          braintreeResult = await BraintreeDropIn.start(request);
+        }
   }
 }
