@@ -11,4 +11,4 @@ This repo is a basic Flutter project outlining how to integrate native JS with F
 
 -------------------------------------------------------
 ##### [https://danielnazarian.com](https://danielnazarian.com)
-##### Copyright 2021 © Daniel Nazarian.
+##### Copyright 2022 © Daniel Nazarian.
