@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: showDialogBraintree(),
+        onPressed: () => showDialogBraintree(),
         tooltip: 'Increment',
         child: const Icon(Icons.attach_money),
       ),
